@@ -1,0 +1,30 @@
+functionality:
+  name: filter_timesheets
+  namespace: chamberlain
+  arguments:
+    - name: "--input"
+      type: file
+      direction: input
+      example: "data.csv"
+    - name: "--year"
+      type: integer
+      direction: input
+      example: 2012
+    - name: "--min_duration_per_project"
+      type: integer
+      direction: input
+      example: 100
+    - name: "--output"
+      type: file
+      direction: output
+      example: "filtered.csv"
+  resources:
+  - type: python_script
+    path: script.py
+platforms:
+  - type: docker
+    image: python:3.10
+    workdir: /viash_automount/Users/chambox/client_search/Data_Intuitive/basic_pipeline/viash_ex/
+    setup:
+      - type: python
+        packages: pandas

@@ -1,0 +1,37 @@
+functionality:
+  name: generate_report
+  namespace: chamberlain
+  arguments:
+    - name: "--input"
+      type: file
+      direction: input
+      example: "filtered.csv"
+    # - name: "--input"
+    #   type: file
+    #   direction: input
+    #   example: "report.html"
+    - name: "--output"
+      type: file
+      direction: output
+      example: "report.pdf"
+  resources:
+  - type: python_script
+    path: script.py
+platforms:
+  - type: docker
+    workdir: /viash_automount/Users/chambox/client_search/Data_Intuitive/basic_pipeline/viash_ex/
+    image: python:3.10
+    setup:
+      - type: python
+        packages:
+          - pandas
+          - plotly
+          - matplotlib
+          - jinja2
+          - weasyprint
+          - nbformat
+          - nbconvert
+          - seaborn
+          - kaleido
+        # resources: 
+        #   - filtered.csv data/filtered.csv
