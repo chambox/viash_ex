@@ -14,15 +14,15 @@ from weasyprint import HTML
 # import logging 
 # import sys
 
-# logging.basicConfig(
-#     level=logging.INFO,
-#     format="%(asctime)s [%(levelname)s] %(message)s",
-#     handlers=[
-#         logging.FileHandler("debug.log"),
-#         logging.StreamHandler(sys.stdout)
-#     ]
-# )
-# logging.info(os.listdir(path='.'))
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("debug.log"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logging.info('Generating report.pdf file ...')
 
 # Report template
 env = Environment(loader=FileSystemLoader('.')) 
@@ -88,3 +88,4 @@ HTML(string=html_out).write_pdf("output/report.pdf"
                                  ,stylesheets=["data/styles/stylesheet.css"]
                                 )
 
+logging.info('report.pdf file has been generated and placed into the output folder')

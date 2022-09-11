@@ -18,7 +18,7 @@ logging.basicConfig(
 min_duration_per_project = 610
 year = 2012
 #get data  and year boolean (I will choose 2015)
-logging.info(os.listdir(path='data'))
+logging.info('Creating filtered.csv file ...')
 data = pd.read_csv('data/data.csv')
 bool_year = pd.to_datetime(data['time_start']).dt.year == year
 
@@ -33,3 +33,4 @@ bool_proj = data.project.isin(selected_pj)
 
 filtered = data[(bool_year&bool_proj)]
 filtered.to_csv('data/filtered.csv')
+logging.info('filtered.csv has been created and written to  the data folder')
